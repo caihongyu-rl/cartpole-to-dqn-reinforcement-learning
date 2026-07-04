@@ -1,14 +1,24 @@
 # CartPole to DQN: A Reinforcement Learning Journey
 
-This repository documents my reinforcement learning learning path from tabular methods to deep reinforcement learning.
+This repository documents my reinforcement learning journey from tabular methods to deep reinforcement learning.
 
-The current stage focuses on implementing **tabular Q-learning** on the classic `CartPole-v1` environment and evaluating the learning behavior using a **multi-seed experimental setup**.
+The project starts with **tabular Q-learning on CartPole**, then progresses to **Deep Q-Networks (DQN)**, and eventually aims to run more rigorous algorithm comparisons on **LunarLander**.
+
+The current stage focuses on implementing tabular Q-learning on `CartPole-v1` and evaluating the learning behavior using a multi-seed experimental setup.
 
 ---
 
 ## Project Overview
 
-The long-term goal of this project is to build a solid reinforcement learning foundation by progressing from basic tabular methods to deep reinforcement learning.
+The long-term goal of this project is to build a solid reinforcement learning foundation and gradually move from simple tabular methods to deep reinforcement learning experiments.
+
+The planned progression is:
+
+```text
+MDP basics → Tabular Q-learning → DQN on CartPole → DQN / Double DQN on LunarLander
+```
+
+CartPole is used as the starting environment because it is simple enough for debugging core reinforcement learning ideas. LunarLander will be used later as the main environment for more meaningful algorithm comparisons, because it is harder than CartPole while still being feasible to train on a personal laptop.
 
 The current stage focuses on:
 
@@ -21,6 +31,15 @@ The current stage focuses on:
 - Mean ± standard deviation learning curves
 
 This stage is not intended to fully solve CartPole. Instead, it focuses on building a complete and reproducible reinforcement learning experimental pipeline.
+
+---
+
+## Roadmap
+
+- [x] Stage 1: Tabular Q-learning on CartPole with multi-seed evaluation
+- [ ] Stage 2: Deep Q-Network (DQN) on CartPole
+- [ ] Stage 3: DQN / Double DQN experiments on LunarLander
+- [ ] Optional: DQN on Atari Pong using Google Colab
 
 ---
 
@@ -37,12 +56,13 @@ Completed:
 - Trained the agent across 5 random seeds
 - Aggregated results using mean and standard deviation
 - Visualized the learning curve with a shaded uncertainty band
+- Updated the README with the first-stage experimental result
 
 ---
 
 ## Environment
 
-The experiment uses:
+The current experiment uses:
 
 - Environment: `CartPole-v1`
 - Library: `gymnasium`
@@ -197,6 +217,19 @@ The main lesson from this stage is that reinforcement learning experiments shoul
 
 ---
 
+## Future Research Direction
+
+After implementing DQN, this project will move toward a more focused experimental question.
+
+Two possible directions are:
+
+1. How do experience replay buffer size and target network update frequency affect DQN training stability?
+2. Can Double DQN reduce Q-value overestimation compared with vanilla DQN in small control environments?
+
+The final research question will be selected after the DQN implementation is complete and initial CartPole results are available.
+
+---
+
 ## Project Structure
 
 ```text
@@ -252,4 +285,15 @@ Planned additions:
 - Q-learning vs DQN comparison
 - Multi-seed DQN learning curves
 
-The goal of the next stage is to understand how neural networks can replace tabular Q-values when the state space becomes continuous or too large for a Q-table.
+After DQN is working reliably on CartPole, the project will move to **LunarLander**, which will serve as the main environment for more rigorous algorithm comparisons.
+
+Possible research-style experiments include:
+
+- DQN vs Double DQN
+- ablation study on replay buffer size
+- ablation study on target network update frequency
+- multi-seed performance comparison with mean ± standard deviation curves
+
+Atari Pong is treated as an optional extension rather than the core goal, because Atari training is significantly more computationally expensive.
+
+The long-term goal is to turn this repository from a basic implementation project into a small but well-documented reinforcement learning experimental pipeline.
